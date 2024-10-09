@@ -9,18 +9,19 @@ class Expert:
         self.rules.append(Rule(conditions, conclusion))
 
     def investigate(self):
-        unique_conditions = []
+        for unique_condition in self.calculate_unique_conditions():
+            if input(f"{unique_condition}? (yes/no): ") == 'yes':
+                self.facts.append(unique_condition)
+
+    def calculate_unique_conditions(self):
+        output = []
 
         for rule in self.rules:
             for condition in rule.conditions:
-                if condition not in unique_conditions:
-                    unique_conditions.append(condition)
+                if condition not in output:
+                    output.append(condition)
 
-        for unique_condition in unique_conditions:
-            response = input(f"{unique_condition}? (yes/no): ")
-
-            if response == 'yes':
-                self.facts.append(unique_condition)
+        return output
 
     def get_facts(self):
         return self.facts
