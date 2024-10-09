@@ -8,5 +8,11 @@ class Expert:
         self.rules.append(Rule(conditions, conclusion))
 
     def investigate(self):
+        unique_conditions = []
+
         for rule in self.rules:
-            print(rule.conclusion)
+            for condition in rule.conditions:
+                if condition not in unique_conditions:
+                    unique_conditions.append(condition)
+
+        print(unique_conditions)
