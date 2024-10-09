@@ -3,6 +3,7 @@ from rule import Rule
 class Expert:
     def __init__(self):
         self.rules = []
+        self.facts = []
 
     def add_rule(self, conditions, conclusion):
         self.rules.append(Rule(conditions, conclusion))
@@ -15,4 +16,11 @@ class Expert:
                 if condition not in unique_conditions:
                     unique_conditions.append(condition)
 
-        print(unique_conditions)
+        for unique_condition in unique_conditions:
+            response = input(f"{unique_condition}? (yes/no): ")
+
+            if response == 'yes':
+                self.facts.append(unique_condition)
+
+    def get_facts(self):
+        return self.facts
