@@ -25,3 +25,8 @@ class Expert:
 
     def get_facts(self):
         return self.facts
+
+    def infer(self):
+        for rule in self.rules:
+            if all(fact in self.facts for fact in rule.conditions):
+                return rule.conclusion
