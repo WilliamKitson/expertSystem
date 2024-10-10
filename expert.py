@@ -10,9 +10,14 @@ class Expert:
 
     def investigate(self):
         for unique_condition in self.calculate_unique_conditions():
-            for inferred in self.infer():
-                if input(f"A: {inferred}? (yes/no): ") == 'yes':
-                    return
+            for rule in self.rules:
+                if all(fact in self.facts for fact in rule.conditions):
+                    if not rule.incorrect:
+                        if input(f"A: {rule.conclusion}? (yes/no): ") == 'yes':
+                            return
+
+                        else:
+                            rule.incorrect = True
 
             if input(f"Q: {unique_condition}? (yes/no): ") == 'yes':
                 self.facts.append(unique_condition)
@@ -26,15 +31,6 @@ class Expert:
                     output.append(condition)
 
         return output
-
-    def infer(self):
-        inferred = []
-
-        for rule in self.rules:
-            if all(fact in self.facts for fact in rule.conditions):
-                inferred.append(rule.conclusion)
-
-        return inferred
 
     def get_facts(self):
         return self.facts
