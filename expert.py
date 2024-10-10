@@ -32,5 +32,5 @@ class Expert:
 
         return output
 
-    def get_facts(self):
-        return self.facts
+    def explain_conclusion(self):
+        return f"facts: {self.facts}"
