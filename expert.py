@@ -18,15 +18,18 @@ class Expert:
             #self.__attempt_answer()
 
     def __calculate_questions(self):
-        unique_conditions = []
+        for unique_condition in self.__calculate_unique_conditions():
+            self.__questions.append(Question(unique_condition))
+
+    def __calculate_unique_conditions(self):
+        output = []
 
         for rule in self.__rules:
             for condition in rule.conditions:
-                if condition not in unique_conditions:
-                    unique_conditions.append(condition)
+                if condition not in output:
+                    output.append(condition)
 
-        for unique_condition in unique_conditions:
-            self.__questions.append(Question(unique_condition))
+        return output
 
     def __ask_question(self):
         for question in self.__questions:
