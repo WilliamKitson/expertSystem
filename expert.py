@@ -15,7 +15,7 @@ class Expert:
 
         while not self.__has_conclusion:
             self.__ask_question()
-            #self.__attempt_answer()
+            self.__attempt_answer()
 
     def __calculate_questions(self):
         for unique_condition in self.__calculate_unique_conditions():
@@ -39,8 +39,14 @@ class Expert:
                 return
 
     def __attempt_answer(self):
+        facts = []
+
+        for question in self.__questions:
+            if question.fact:
+                facts.append(question.question)
+
         for rule in self.__rules:
-            if all(fact in self.__questions for fact in rule.conditions):
+            if all(fact in facts for fact in rule.conditions):
                 if not rule.incorrect:
                     if input(f"A: {rule.conclusion}? (yes/no): ") != 'yes':
                         rule.incorrect = True
