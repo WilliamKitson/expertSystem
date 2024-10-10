@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ad39f0e-a19e-4499-82a6-09195260bb70" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expert.py" beforeDir="false" afterPath="$PROJECT_DIR$/expert.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +80,10 @@
       <workItem from="1728486416222" duration="1991000" />
       <workItem from="1728488458704" duration="216000" />
       <workItem from="1728550225011" duration="2335000" />
+      <workItem from="1728560914889" duration="96000" />
+      <workItem from="1728569828475" duration="108000" />
+      <workItem from="1728573267114" duration="571000" />
+      <workItem from="1728596346939" duration="452000" />
     </task>
     <servers />
   </component>
@@ -86,7 +91,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/expertSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1728557941459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/expertSystem$expert.coverage" NAME="expert Coverage Results" MODIFIED="1728553467177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/expertSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1728573510348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/expertSystem$expert.coverage" NAME="expert Coverage Results" MODIFIED="1728573439075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

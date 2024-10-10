@@ -35,7 +35,7 @@ class Expert:
         for question in self.__questions:
             if not question.asked:
                 question.asked = True
-                question.fact = input(f"A: {question.question}? (yes/no): ") == "yes"
+                question.fact = input(f"Q: {question.question}? (yes/no): ") == "yes"
                 return
 
     def __attempt_answer(self):
@@ -47,6 +47,7 @@ class Expert:
 
                     else:
                         self.__has_conclusion = True
+                        return
 
     def __calculate_facts(self):
         facts = []
