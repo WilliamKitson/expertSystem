@@ -35,10 +35,7 @@ class Expert:
         for question in self.__questions:
             if not question.asked:
                 question.asked = True
-
-                if input(f"A: {question.question}? (yes/no): ") != 'yes':
-                    question.fact = True
-
+                question.fact = input(f"A: {question.question}? (yes/no): ")
                 return
 
     def __attempt_answer(self):
