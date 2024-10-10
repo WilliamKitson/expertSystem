@@ -10,10 +10,6 @@ class Expert:
 
     def investigate(self):
         for unique_condition in self.calculate_unique_conditions():
-            if self.infer() is not None:
-                if input(f"{self.infer()}? (yes/no): ") == 'yes':
-                    return
-
             if input(f"{unique_condition}? (yes/no): ") == 'yes':
                 self.facts.append(unique_condition)
 
@@ -31,6 +27,10 @@ class Expert:
         return self.facts
 
     def infer(self):
+        inferred = []
+
         for rule in self.rules:
             if all(fact in self.facts for fact in rule.conditions):
-                return rule.conclusion
+                inferred.append(rule.conclusion)
+
+        return inferred
