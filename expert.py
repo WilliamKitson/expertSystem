@@ -41,11 +41,12 @@ class Expert:
     def __attempt_answer(self):
         for rule in self.__rules:
             if all(fact in self.__calculate_facts() for fact in rule.conditions):
-                if input(f"A: {rule.conclusion}? (yes/no): ") != 'yes':
-                    rule.incorrect = True
+                if not rule.incorrect:
+                    if input(f"A: {rule.conclusion}? (yes/no): ") != 'yes':
+                        rule.incorrect = True
 
-                else:
-                    self.__has_conclusion = True
+                    else:
+                        self.__has_conclusion = True
 
     def __calculate_facts(self):
         facts = []
