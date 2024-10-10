@@ -22,14 +22,14 @@ class Expert:
             self.__questions.append(Question(unique_condition))
 
     def __calculate_unique_conditions(self):
-        output = []
+        unique_conditions = []
 
         for rule in self.__rules:
             for condition in rule.conditions:
-                if condition not in output:
-                    output.append(condition)
+                if condition not in unique_conditions:
+                    unique_conditions.append(condition)
 
-        return output
+        return unique_conditions
 
     def __ask_question(self):
         for question in self.__questions:
@@ -39,14 +39,8 @@ class Expert:
                 return
 
     def __attempt_answer(self):
-        facts = []
-
-        for question in self.__questions:
-            if question.fact:
-                facts.append(question.question)
-
         for rule in self.__rules:
-            if all(fact in facts for fact in rule.conditions):
+            if all(fact in self.__calculate_facts() for fact in rule.conditions):
                 if not rule.incorrect:
                     if input(f"A: {rule.conclusion}? (yes/no): ") != 'yes':
                         rule.incorrect = True
@@ -54,12 +48,14 @@ class Expert:
                     else:
                         self.__has_conclusion = True
 
-
-    def explain_conclusion(self):
-        facts = ""
+    def __calculate_facts(self):
+        facts = []
 
         for question in self.__questions:
             if question.fact:
-                facts += f"{question.conclusion},"
+                facts.append(question.question)
 
-        return f"facts: {facts}"
+        return facts
+
+    def explain_conclusion(self):
+        return "TEMP"
