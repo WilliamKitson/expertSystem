@@ -7,6 +7,3 @@ expert.add_rule(["Survival Horror", "Classic", "Story Driven"], "Silent Hill 2")
 expert.add_rule(["Comedy", "Story Driven", "Mystery", "Beat-Em-Up"], "Judgment")
 expert.add_rule(["Comedy", "Story Driven", "Mystery", "Beat-Em-Up"], "Like a Dragon")
 expert.investigate()
-
-print(expert.infer())
-print(expert.get_facts())
