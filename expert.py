@@ -5,7 +5,7 @@ class Expert:
     def __init__(self):
         self.__rules = []
         self.__questions = []
-        self.__has_conclusion = False
+        self.__conclusion = ""
 
     def add_rule(self, conditions, conclusion):
         self.__rules.append(Rule(conditions, conclusion))
@@ -13,7 +13,7 @@ class Expert:
     def investigate(self):
         self.__calculate_questions()
 
-        while not self.__has_conclusion:
+        while not self.__conclusion:
             self.__ask_question()
             self.__attempt_answer()
 
@@ -46,7 +46,7 @@ class Expert:
                         rule.incorrect = True
 
                     else:
-                        self.__has_conclusion = True
+                        self.__conclusion = rule.conclusion
                         return
 
     def __calculate_facts(self):
@@ -59,4 +59,4 @@ class Expert:
         return facts
 
     def explain_conclusion(self):
-        return f"facts: {self.__calculate_facts()}"
+        return f"conclusion: {self.__conclusion}, facts: {self.__calculate_facts()}"
