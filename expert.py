@@ -24,12 +24,20 @@ class Expert:
     def __calculate_unique_conditions(self):
         unique_conditions = []
 
-        for rule in self.__rules:
-            for condition in rule.conditions:
-                if condition not in unique_conditions:
-                    unique_conditions.append(condition)
+        for condition in self.__collect_conditions():
+            if condition not in unique_conditions:
+                unique_conditions.append(condition)
 
         return unique_conditions
+
+    def __collect_conditions(self):
+        conditions = []
+
+        for rule in self.__rules:
+            for condition in rule.conditions:
+                conditions.append(condition)
+
+        return conditions
 
     def __ask_question(self):
         for question in self.__questions:
