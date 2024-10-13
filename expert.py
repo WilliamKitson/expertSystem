@@ -5,7 +5,7 @@ class Expert:
     def __init__(self):
         self.__rules = []
         self.__questions = []
-        self.__conclusion = ""
+        self.__conclusions = []
 
     def add_rule(self, conditions, conclusion):
         self.__rules.append(Rule(conditions, conclusion))
@@ -13,9 +13,9 @@ class Expert:
     def investigate(self):
         self.__calculate_questions()
 
-        while not self.__conclusion:
+        while not self.__conclusions:
             self.__ask_question()
-            self.__attempt_answer()
+            self.__process_facts()
 
     def __calculate_questions(self):
         for unique_condition in self.__calculate_unique_conditions():
@@ -46,16 +46,18 @@ class Expert:
                 question.fact = input(f"Q: {question.question}? (yes/no): ") == "yes"
                 return
 
-    def __attempt_answer(self):
+    def __process_facts(self):
         for rule in self.__rules:
             if all(fact in self.__calculate_facts() for fact in rule.conditions):
-                if not rule.incorrect:
-                    if input(f"A: {rule.conclusion}? (yes/no): ") != 'yes':
-                        rule.incorrect = True
+                self.__conclusions.append(rule.conclusion)
 
-                    else:
-                        self.__conclusion = rule.conclusion
-                        return
+    def __calculate_conclusions(self):
+        conclusions = []
+
+        for conclusion in self.__conclusions:
+            conclusions.append(conclusion)
+
+        return conclusions
 
     def __calculate_facts(self):
         facts = []
@@ -66,5 +68,5 @@ class Expert:
 
         return facts
 
-    def explain_conclusion(self):
-        return f"conclusion: {self.__conclusion}, facts: {self.__calculate_facts()}"
+    def get_conclusion(self):
+        return f"conclusion: {self.__calculate_conclusions()}, facts: {self.__calculate_facts()}"
