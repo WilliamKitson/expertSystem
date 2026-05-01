@@ -1,26 +1,68 @@
 # Expert System
-## Who 
-I developed this project during my 2025 Software Engineering degree’s Introduction to AI module, using my student GitHub credentials (4kitsw10). I am the sole contributor and maintainer of this project. 
 
-## What 
-This project contains the source code for a basic expert system that plays 20-Questions to guess a video game based off its associated characteristics. It was written in object-oriented Python. Were I to extend this project, I would develop and implement a database of video game titles and their rules to enhance the systems complexity and remove the need to manually define them upon initialisation of the expert system. 
-### main.py
-This source file contains a basic implementation of the expert system, initialising an instance of the system, defining a few basic questions and answers, and launching the core loop of the program. The program should be launched from this file.
+Small Python expert system that uses hand-written rules to recommend games based on yes/no answers.
 
-### expert.py
-This source file defines the expert class, the implementation object that coordinates domain rule and questions objects into fulfil the requirements of the program. The investigate function loops through and asks questions, using the users answers to calculate the likely video game. 
+## What It Does
 
-### rule.py
-The Rule data class contains an array of conditions and a singular conclusion variable, this is used by the expert system to questions with the conclusion of the rule.
+The project builds a simple rule engine:
 
-### question.py
-The question data class is used by the expert system to record if a rules condition has been queried and the answer thereof. The expert system uses questions to ensure that rules are only queried once. 
+- `Rule` stores a list of required conditions and a conclusion.
+- `Question` tracks whether a condition has been asked and whether the answer was `yes`.
+- `Expert` collects all unique conditions from the rules, asks the user about them, and adds conclusions when a rule's conditions are satisfied.
 
-## When 
-I developed this project in the first semester of my second year of my Software Engineering course, September to December of 2024. 
+The sample dataset in [`main.py`](/Users/williamkitson/PyCharmProjects/expertSystem/main.py) recommends:
 
-## Where 
-This project was developed at Solent University. 
+- `Cyberpunk 2077`
+- `Deus Ex`
+- `Silent Hill 2`
+- `Judgment`
+- `Like a Dragon`
 
-## Why
-This project was useful as it allowed me space to develop my understanding of how Expert Systems are designed and utilised throughout larger software systems. This project was a fundamental building block in my larger AI assessment project (4kitsw10_COM526_1).
+## Project Layout
+
+- [`main.py`](/Users/williamkitson/PyCharmProjects/expertSystem/main.py): entry point and example knowledge base
+- [`expert.py`](/Users/williamkitson/PyCharmProjects/expertSystem/expert.py): rule evaluation and question loop
+- [`rule.py`](/Users/williamkitson/PyCharmProjects/expertSystem/rule.py): rule model
+- [`question.py`](/Users/williamkitson/PyCharmProjects/expertSystem/question.py): question model
+
+## Requirements
+
+- Python 3
+
+No third-party packages are used.
+
+## Run
+
+```bash
+python3 main.py
+```
+
+You will be prompted with questions like:
+
+```text
+Q: RPG? (yes/no):
+```
+
+Answer with `yes` or `no`.
+
+## Example
+
+If you answer `yes` to `RPG`, `Action`, and `Story Driven`, the program returns:
+
+```text
+conclusion: ['Cyberpunk 2077', 'Deus Ex'], facts: ['RPG', 'Action', 'Story Driven']
+```
+
+## How Rules Are Added
+
+Rules are defined in `main.py` with:
+
+```python
+expert.add_rule(["RPG", "Action", "Story Driven"], "Cyberpunk 2077")
+```
+
+The first argument is the list of required facts. The second argument is the conclusion produced when all facts are true.
+
+## Current Limitation
+
+The investigation loop stops only when at least one conclusion is found. If the user answers in a way that matches no rule, the program can get stuck after all questions have been asked because there is no fallback or "no match" exit path yet.
